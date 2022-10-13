@@ -1,7 +1,7 @@
 import React from "react";
 
-const Abs = () => {
-  return <div>Abs File</div>;
+const Back = () => {
+  return <div>Back</div>;
 };
 
-export default Abs;
+export default Back;

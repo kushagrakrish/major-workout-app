@@ -1,7 +1,7 @@
 import React from "react";
 
-const Abs = () => {
-  return <div>Abs File</div>;
+const Legs = () => {
+  return <div>Legs</div>;
 };
 
-export default Abs;
+export default Legs;

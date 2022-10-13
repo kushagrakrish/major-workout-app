@@ -1,7 +1,7 @@
 import React from "react";
 
-const Abs = () => {
-  return <div>Abs File</div>;
+const Kanban = () => {
+  return <div>Kanban</div>;
 };
 
-export default Abs;
+export default Kanban;
