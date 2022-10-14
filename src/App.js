@@ -1,7 +1,8 @@
 import React from "react";
+import Home from "./modules/home/Home";
 import "./App.css";
 const App = () => {
-  return <div>App is new thios bdasdas d</div>;
+  return <div><Home /></div>;
 };
 
 export default App;
