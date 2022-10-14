@@ -1,7 +1,12 @@
 import React from "react";
+import Layout from "../../shared/components/Layout";
 
 const Arms = () => {
-  return <div>Arms</div>;
+  return (
+    <>
+      <Layout>Armsss</Layout>`
+    </>
+  );
 };
 
 export default Arms;

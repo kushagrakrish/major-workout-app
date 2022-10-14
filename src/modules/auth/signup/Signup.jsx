@@ -2,13 +2,11 @@ import React, { useState } from "react";
 import {
   Select,
   Button,
-  Checkbox,
   Flex,
   FormControl,
   FormLabel,
   Heading,
   Input,
-  Link,
   Stack,
   Radio,
   RadioGroup,
@@ -16,22 +14,9 @@ import {
   HStack,
   InputLeftAddon,
   InputGroup,
-  FormErrorMessage,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 export const Signup = () => {
-  const [value, setValue] = useState("1");
-  const [errvalue, setErrvalue] = useState({
-    name: false,
-    gender: false,
-    height: false,
-    weight: false,
-    mobile: false,
-    email: false,
-    meal: false,
-    workout: false,
-    password: false,
-  });
   const [formValue, setFormValue] = useState({
     name: "",
     gender: "",
@@ -45,65 +30,16 @@ export const Signup = () => {
   });
 
   const navigate = useNavigate();
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formValue.name === "") {
-      setErrvalue({
-        ...errvalue,
-        name: true,
-      });
-    }
-    if (formValue.gender === "") {
-      setErrvalue({
-        ...errvalue,
-        gender: true,
-      });
-    }
-    if (formValue.height === "") {
-      setErrvalue({
-        ...errvalue,
-        height: true,
-      });
-    }
-    if (formValue.weight === "") {
-      setErrvalue({
-        ...errvalue,
-        weight: true,
-      });
-    }
-    if (formValue.mobile === "") {
-      setErrvalue({
-        ...errvalue,
-        mobile: true,
-      });
-    }
-    if (formValue.meal === "") {
-      setErrvalue({
-        ...errvalue,
-        meal: true,
-      });
-    }
-    if (formValue.workout === "") {
-      setErrvalue({
-        ...errvalue,
-        workout: true,
-      });
-    }
-    if (formValue.email === "") {
-      setErrvalue({
-        ...errvalue,
-        email: true,
-      });
-    }
-    if (formValue.password === "") {
-      setErrvalue({
-        ...errvalue,
-        password: true,
-      });
-    } else {
-      console.log(formValue);
-    }
+    console.log(formValue);
   };
+
+  // useEffect(() => {
+  //   console.log(formValue)
+  // }, [formValue])
+
   return (
     <form onSubmit={handleSubmit}>
       <Stack
@@ -124,6 +60,7 @@ export const Signup = () => {
                 Login
               </a>
             </h2>
+
             <FormControl id='name' isRequired={true}>
               <FormLabel>Name</FormLabel>
               <Input
@@ -135,96 +72,119 @@ export const Signup = () => {
                 placeholder='Enter your Name'
               />
             </FormControl>
-            <FormControl id='gender'>
+
+            <FormControl id='gender' isRequired={true}>
               <FormLabel>Gender</FormLabel>
               <RadioGroup
                 value={formValue.gender}
-                onChange={(e) =>
-                  setFormValue({ ...formValue, gender: e.target.value })
-                }
+                onChange={(e) => setFormValue({ ...formValue, gender: e })}
               >
                 <Stack direction='row' gap={"1.5rem"}>
-                  <Radio value='1'>Male</Radio>
-                  <Radio value='2'>Female</Radio>
+                  <Radio value='male'>Male</Radio>
+                  <Radio value='female'>Female</Radio>
                 </Stack>
               </RadioGroup>
             </FormControl>
+
             <HStack spacing={"24"}>
-              <FormControl id='height'>
+              <FormControl id='height' isRequired={true}>
                 <FormLabel>Height (in cm)</FormLabel>
                 <Input
                   value={formValue.height}
-                  onChange={(e) => setFormValue(e.target.value)}
+                  onChange={(e) =>
+                    setFormValue({ ...formValue, height: e.target.value })
+                  }
                   type='number'
                   placeholder='Enter your Height'
                 />
               </FormControl>
-              <FormControl id='weight'>
+              <FormControl id='weight' isRequired={true}>
                 <FormLabel>Weight (in kg)</FormLabel>
                 <Input
                   value={formValue.weight}
-                  onChange={(e) => setFormValue(e.target.value)}
+                  onChange={(e) =>
+                    setFormValue({ ...formValue, weight: e.target.value })
+                  }
                   type='number'
                   placeholder='Enter your Weight'
                 />
               </FormControl>
             </HStack>
-            <FormControl id='phone'>
+
+            <FormControl id='phone' isRequired={true}>
               <FormLabel>Mobile No.</FormLabel>
               <InputGroup>
                 <InputLeftAddon children='+91' />
                 <Input
                   value={formValue.mobile}
-                  onChange={(e) => setFormValue(e.target.value)}
+                  onChange={(e) =>
+                    setFormValue({ ...formValue, mobile: e.target.value })
+                  }
                   type='tel'
                   placeholder='Enter your Mobile No.'
                 />
               </InputGroup>
             </FormControl>
+
             <Stack
               direction={{ base: "column", sm: "row" }}
               align={"center"}
               margin={"80"}
             >
-              <FormLabel>Meal</FormLabel>
-              <Select
-                value={formValue.meal}
-                onChange={(e) => setFormValue(e.target.value)}
-                placeholder='Select Meal'
-              >
-                <option value='option1'>Veg</option>
-                <option value='option2'>Non-veg</option>
-                <option value='option3'>Eggetarian</option>
-              </Select>
-              <FormLabel>Workout</FormLabel>
-              <Select
-                value={formValue.workout}
-                onChange={(e) => setFormValue(e.target.value)}
-                placeholder='Select Workout'
-              >
-                <option value='option1'>Beginner</option>
-                <option value='option2'>Intermediate</option>
-                <option value='option3'>Advance</option>
-              </Select>
-            </Stack>{" "}
-            <FormControl id='email'>
+              <FormControl isRequired={true}>
+                <FormLabel>Meal</FormLabel>
+                <Select
+                  value={formValue.meal}
+                  onChange={(e) =>
+                    setFormValue({ ...formValue, meal: e.target.value })
+                  }
+                  placeholder='Select Meal'
+                >
+                  <option value='Veg'>Veg</option>
+                  <option value='Non-veg2'>Non-veg</option>
+                  <option value='Eggetarian'>Eggetarian</option>
+                </Select>
+              </FormControl>
+              <FormControl isRequired={true}>
+                <FormLabel>Workout</FormLabel>
+                <Select
+                  value={formValue.workout}
+                  onChange={(e) =>
+                    setFormValue({ ...formValue, workout: e.target.value })
+                  }
+                  placeholder='Select Workout'
+                >
+                  <option value='Beginner'>Beginner</option>
+                  <option value='Intermediate'>Intermediate</option>
+                  <option value='Advance'>Advance</option>
+                </Select>
+              </FormControl>
+            </Stack>
+
+            <FormControl id='email' isRequired={true}>
               <FormLabel>Email address</FormLabel>
               <Input
                 value={formValue.email}
-                onChange={(e) => setFormValue(e.target.value)}
+                onChange={(e) =>
+                  setFormValue({ ...formValue, email: e.target.value })
+                }
                 type='email'
                 placeholder='Enter your E-mail'
               />
             </FormControl>
-            <FormControl id='password'>
+
+            <FormControl id='password' isRequired={true}>
               <FormLabel>Password</FormLabel>
               <Input
                 value={formValue.password}
-                onChange={(e) => setFormValue(e.target.value)}
+                onChange={(e) =>
+                  setFormValue({ ...formValue, password: e.target.value })
+                }
                 type='password'
                 placeholder='Enter your Password'
               />
             </FormControl>
+
             <Button type='submit' colorScheme={"blue"} variant={"solid"}>
               Sign in
             </Button>

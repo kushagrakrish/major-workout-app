@@ -1,7 +1,12 @@
 import React from "react";
+import Layout from "../../shared/components/Layout";
 
 const Chest = () => {
-  return <div>Chest</div>;
+  return (
+    <>
+      <Layout>Chest</Layout>`
+    </>
+  );
 };
 
 export default Chest;

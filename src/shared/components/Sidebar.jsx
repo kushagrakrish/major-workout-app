@@ -89,7 +89,7 @@ const Sidebar = () => {
                     {item.links.map((link) => (
                       <NavLink
                         className='block w-full hover:bg-slate-100 hover:opacity-100 text-xl hover:rounded-md '
-                        to={link.path}
+                        to={`/${link.path}`}
                       >
                         <h2
                           className='text-gray-800 hover:text-gray-600 mt-4 mb-4'

@@ -1,7 +1,12 @@
 import React from "react";
+import Layout from "../../shared/components/Layout";
 
 const Legs = () => {
-  return <div>Legs</div>;
+  return (
+    <>
+      <Layout>Legs</Layout>
+    </>
+  );
 };
 
 export default Legs;
