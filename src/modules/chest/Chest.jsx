@@ -1,7 +1,12 @@
 import React from "react";
+import Layout from "../../shared/components/Layout";
 
-const Abs = () => {
-  return <div>Abs File</div>;
+const Chest = () => {
+  return (
+    <>
+      <Layout>Chest</Layout>`
+    </>
+  );
 };
 
-export default Abs;
+export default Chest;

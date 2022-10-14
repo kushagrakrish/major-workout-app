@@ -1,7 +1,12 @@
 import React from "react";
+import Layout from "../../shared/components/Layout";
 
-const Abs = () => {
-  return <div>Abs File</div>;
+const Arms = () => {
+  return (
+    <>
+      <Layout>Armsss</Layout>`
+    </>
+  );
 };
 
-export default Abs;
+export default Arms;
