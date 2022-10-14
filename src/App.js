@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
+import Home from "./modules/home/Home";
 import "./App.css";
 import Signup from "./modules/auth/signup/Signup";
 import { Routes, Route } from "react-router-dom";
@@ -12,7 +13,6 @@ import Chest from "./modules/chest/Chest";
 import Kanban from "./modules/kanban/Kanban";
 import Legs from "./modules/legs/Legs";
 import Shoulder from "./modules/shoulder/Shoulder";
-import Sidebar from "./shared/components/Sidebar";
 
 const App = () => {
   return (
