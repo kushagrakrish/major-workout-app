@@ -16,6 +16,9 @@ import {
   InputGroup,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import { useToast } from "@chakra-ui/react";
+
 export const Signup = () => {
   const [formValue, setFormValue] = useState({
     name: "",
@@ -30,15 +33,52 @@ export const Signup = () => {
   });
 
   const navigate = useNavigate();
+  const toast = useToast();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formValue);
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/user/register",
+        formValue
+      );
+      toast({
+        title: "Login Successfull",
+        duration: 3000,
+        position: "top-left",
+        status: "success",
+        isClosable: true,
+      });
+      navigate("/login");
+      console.log(response);
+    } catch (error) {
+      toast({
+        title: error.response.data || "Something went Wrong",
+        duration: 3000,
+        position: "top-left",
+        status: "error",
+        isClosable: true,
+      });
+      console.log(error);
+    }
   };
 
   // useEffect(() => {
-  //   console.log(formValue)
-  // }, [formValue])
+  //   const propertiesForSale = async () => {
+  //     try {
+  //       const response = await fetchApi(
+  //         `${baseUrl}/properties/list?locationExternalIDs=5002&purpose=for-sale&hitsPerPage=6`
+  //       );
+  //       const data = await response;
+  //       // console.log(data.hits);
+  //       setSales(data.hits);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   propertiesForSale();
+  // }, []);
 
   return (
     <form onSubmit={handleSubmit}>

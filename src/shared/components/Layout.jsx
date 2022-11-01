@@ -55,7 +55,7 @@ const Layout = ({ children }) => {
       </div>
 
       {/* Children */}
-      <div className='bg-slate-600 pt-[90px]'>{children}</div>
+      <div className=' pt-[90px]'>{children}</div>
     </>
   );
 };

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import { useToast } from "@chakra-ui/react";
 import {
   Button,
   Checkbox,
@@ -12,9 +13,42 @@ import {
   Image,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Abs = () => {
   const navigate = useNavigate();
+  const toast = useToast();
+  const [formValue, setFormValue] = useState({
+    email: "",
+    password: "",
+  });
+  const handleSubmit = async () => {
+    console.log(formValue);
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/api/user/login",
+        formValue
+      );
+      toast({
+        title: "Login Successfull",
+        duration: 3000,
+        position: "top-left",
+        status: "success",
+        isClosable: true,
+      });
+      navigate("/home");
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+      toast({
+        title: error.response.data || "Something went Wrong",
+        duration: 3000,
+        position: "top-left",
+        status: "error",
+        isClosable: true,
+      });
+    }
+  };
   return (
     <Stack minH={"100vh"} direction={{ base: "column", md: "row" }}>
       <Flex p={8} flex={1} align={"center"} justify={"center"}>
@@ -22,11 +56,25 @@ const Abs = () => {
           <Heading fontSize={"2xl"}>Sign in to your account</Heading>
           <FormControl id='email'>
             <FormLabel>Email address</FormLabel>
-            <Input type='email' />
+            <Input
+              type='email'
+              value={formValue.email}
+              onChange={(e) =>
+                setFormValue({ ...formValue, email: e.target.value })
+              }
+              placeholder='Enter your Email'
+            />
           </FormControl>
           <FormControl id='password'>
             <FormLabel>Password</FormLabel>
-            <Input type='password' />
+            <Input
+              type='password'
+              value={formValue.password}
+              onChange={(e) =>
+                setFormValue({ ...formValue, password: e.target.value })
+              }
+              placeholder='Enter your Password'
+            />
           </FormControl>
           <Stack spacing={6}>
             <Stack
@@ -40,7 +88,7 @@ const Abs = () => {
             <Button
               colorScheme={"blue"}
               variant={"solid"}
-              onClick={() => navigate("/home")}
+              onClick={() => handleSubmit()}
             >
               Sign in
             </Button>
