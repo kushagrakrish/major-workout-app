@@ -1,9 +1,10 @@
 import React from "react";
+import Home from "./modules/home/Home";
 import "./App.css";
 import Signup from "./modules/auth/signup/Signup";
 import { Routes, Route } from "react-router-dom";
 import Login from "./modules/auth/login/Login";
-import Home from "./modules/home/Home";
+// import Home from "./modules/home/Home";
 import Abs from "./modules/abs/Abs";
 import Arms from "./modules/arms/Arms";
 import Back from "./modules/back/Back";
@@ -14,6 +15,7 @@ import Legs from "./modules/legs/Legs";
 import Shoulder from "./modules/shoulder/Shoulder";
 
 const App = () => {
+  // <<<<<<< HEAD
   return (
     <>
       <Routes>
@@ -31,6 +33,8 @@ const App = () => {
       </Routes>
     </>
   );
+
+  //  6a1ee18ce4547d2434f7757b8999815eea1e1208
 };
 
 export default App;
