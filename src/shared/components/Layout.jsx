@@ -10,12 +10,15 @@ import {
   Center,
 } from "@chakra-ui/react";
 import Sidebar from "./Sidebar";
+import LargeWithAppLinksAndSocial from "./Footer";
+import { useNavigate } from "react-router-dom";
 
 const Layout = ({ children }) => {
+  const navigate = useNavigate();
   return (
     <>
       {/* Header */}
-      <div className='flex items-center justify-between p-2 fixed bg-white w-full'>
+      <div className='flex items-center justify-between p-2 fixed bg-zinc-100 w-full'>
         {/* Hamburger Sidebar */}
         <Sidebar />
 
@@ -49,13 +52,15 @@ const Layout = ({ children }) => {
             <MenuDivider />
             <MenuItem>Your Servers</MenuItem>
             <MenuItem>Account Settings</MenuItem>
-            <MenuItem>Logout</MenuItem>
+            <MenuItem onClick={() => navigate("/login")}>Logout</MenuItem>
           </MenuList>
         </Menu>
       </div>
+      {/* Rendering Children */}
+      <div className='py-[64px] bg-zinc-100'>{children}</div>
+      {/* footer */}
 
-      {/* Children */}
-      <div className=' pt-[90px]'>{children}</div>
+      <LargeWithAppLinksAndSocial />
     </>
   );
 };
