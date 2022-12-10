@@ -14,15 +14,19 @@ import {
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { useAuth } from "../../../context/auth";
 
-const Abs = () => {
+const Login = () => {
+  // const [user, setUser] = useState("");
   const navigate = useNavigate();
+  // const auth = useAuth();
   const toast = useToast();
   const [formValue, setFormValue] = useState({
     email: "",
     password: "",
   });
   const handleSubmit = async () => {
+    // auth.login(user);
     console.log(formValue);
     try {
       const response = await axios.post(
@@ -108,4 +112,4 @@ const Abs = () => {
   );
 };
 
-export default Abs;
+export default Login;

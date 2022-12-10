@@ -26,8 +26,12 @@ const links = [
         path: "abs",
       },
       {
-        name: "Arms",
-        path: "arms",
+        name: "Biceps",
+        path: "biceps",
+      },
+      {
+        name: "Triceps",
+        path: "triceps",
       },
       {
         name: "Chest",

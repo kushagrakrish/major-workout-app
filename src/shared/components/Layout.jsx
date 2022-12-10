@@ -12,9 +12,11 @@ import {
 import Sidebar from "./Sidebar";
 import LargeWithAppLinksAndSocial from "./Footer";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../../context/auth";
 
 const Layout = ({ children }) => {
   const navigate = useNavigate();
+  const auth = useAuth();
   return (
     <>
       {/* Header */}
@@ -46,7 +48,7 @@ const Layout = ({ children }) => {
             </Center>
             <br />
             <Center>
-              <p>Hi,Kushagra</p>
+              <p>Hi Kanchi{auth.user}</p>
             </Center>
             <br />
             <MenuDivider />

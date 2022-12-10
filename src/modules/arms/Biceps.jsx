@@ -1,15 +1,15 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 import Layout from "../../shared/components/Layout";
 import { Button } from "@chakra-ui/react";
-import sampleChest from "../../assests/sampleChest.pdf";
-import axios from "axios";
-const Chest = () => {
-  const [data, setData] = useState([]);
+import sampleBiceps from "../../assests/sampleBiceps.pdf";
+const Biceps = () => {
+  const [data, setData] = useState({});
   useEffect(() => {
-    const fetchChest = async () => {
+    const fetchBiceps = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/exercise/chest"
+          "http://localhost:5000/api/exercise/biceps"
         );
         console.log(response);
         setData(response.data);
@@ -17,7 +17,7 @@ const Chest = () => {
         console.log(error);
       }
     };
-    fetchChest();
+    fetchBiceps();
   }, []);
   return (
     <>
@@ -32,7 +32,7 @@ const Chest = () => {
               return (
                 <div>
                   <h1 className='text-[30px] font-semibold text-blue-500 mt-2 mb-2 tracking-[2px]'>
-                    {i + 1}. {item.name}
+                    {i + 1} . {item.name}
                   </h1>
                   <h3 className='text-[18px] font-medium ml-6'>
                     Difficulty:
@@ -79,17 +79,21 @@ const Chest = () => {
                   </div>
                 </div>
               );
-            })}
+            })}{" "}
             <hr />
             <div>
               <h1 className='text-[26px] font-semibold text-blue-500 mt-2 mb-2'>
-                Here is sample Chest workout!
+                Here is sample Biceps workout!
               </h1>
               <h3 className='text-[18px] font-medium text-gray-700 mb-8'>
                 Try this in your next workout session
               </h3>
-              <Button colorScheme={"blue"} variant={"solid"} href={sampleChest}>
-                <a href={sampleChest} download={sampleChest}>
+              <Button
+                colorScheme={"blue"}
+                variant={"solid"}
+                href={sampleBiceps}
+              >
+                <a href={sampleBiceps} download={sampleBiceps}>
                   Download here
                 </a>
               </Button>
@@ -97,8 +101,9 @@ const Chest = () => {
           </div>
         </div>
       </Layout>
+      `
     </>
   );
 };
 
-export default Chest;
+export default Biceps;
